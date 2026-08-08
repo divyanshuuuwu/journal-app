@@ -41,6 +41,26 @@ const isUserAlreadyExists = await userModel.findOne({
 }
 
 
+const loginUser = async(req, res)=>{
+    const {username , email , passowrd} = req.body
+
+    const user = await User.findOne({
+    $or: [
+        { email: email },
+        { username: username }
+    ]
+});
+
+if(!user){
+    return res.status(404).json({
+        message:"user not found"
+    })
+}
+
+
+} 
+
+
 
 
 
