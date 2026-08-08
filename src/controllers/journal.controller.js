@@ -70,7 +70,62 @@ const showById = async(req,res)=>{
     }
 }
 
+const updateJournal = async(req,res)=>{
+    const id = req.params.id
+   try{const userUpdated = await journalModel.findOneAndUpdate(
+        {_id:id, user:req.user.id}, req.body,{new:true}) 
+
+
+        if(!userUpdated){
+            return res.status(404).json({
+                message:"journal not found"
+            })
+        }
+
+        return res.status(200).json({
+            message:"updated sucessfully",
+            userUpdated
+
+        })
+
+    }catch(err){
+        console.log(err)
+        return res.status(404).json({
+            message:"cant update"
+        })
+
+    }
+}
+
+const deleteJournal = async(req, res)=>{
+    const id = req.params.id
+     try{const userDeleted = await journalModel.findOneAndDelete(
+        {_id:id, user:req.user.id}) 
+
+
+        if(!userDeleted){
+            return res.status(404).json({
+                message:"journal not found"
+            })
+        }
+
+        return res.status(200).json({
+            message:"deleted sucessfully",
+            userDeleted
+
+        })
+
+    }catch(err){
+        console.log(err)
+        return res.status(404).json({
+            message:"cant delete"
+        })
+
+    }
+
+
+}
 
 
 
-module.exports = {createJournal, showJournal, showById}
+module.exports = {createJournal, showJournal, showById, updateJournal, deleteJournal}
