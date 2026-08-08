@@ -24,7 +24,7 @@ const isUserAlreadyExists = await userModel.findOne({
         const user = await userModel.create({
             username,
             email,
-            passowrd:hashedPassword,
+            password: hashedPassword,
             role
         })
 
@@ -42,9 +42,9 @@ const isUserAlreadyExists = await userModel.findOne({
 
 
 const loginUser = async(req, res)=>{
-    const {username , email , passowrd} = req.body
+    const {username , email , password} = req.body
 
-    const user = await User.findOne({
+const user = await userModel.findOne({
     $or: [
         { email: email },
         { username: username }
@@ -56,6 +56,30 @@ if(!user){
         message:"user not found"
     })
 }
+
+const isPasswordValid = await bcrypt.compare(password , user.password)
+if(!isPasswordValid){
+    return res.status(401).json({
+        message:"Password is incorrect"
+    })
+}
+
+const token = jwt.sign({
+    id:user._id,
+    role:user.role
+},process.env.JWT_SECRET)
+
+res.cookie("token", token)
+
+  res.status(200).json({
+        message:"user logged in successfully",
+        user:{
+            username:user.username,
+            email:user.email,
+            role:user.role
+        }
+    })
+
 
 
 } 
@@ -71,4 +95,4 @@ if(!user){
 
 
 
-module.exports = {registerUser}
+module.exports = {registerUser, loginUser}
