@@ -7,6 +7,7 @@ const {authMiddleware} = require("../middlewares/auth.middleware")
 
 router.post("/create",authMiddleware,journalController.createJournal)
 router.get("/showall", authMiddleware,journalController.showJournal)
+router.get("/showbyid/:id", authMiddleware,journalController.showById)
 
 
 

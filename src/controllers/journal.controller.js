@@ -42,7 +42,35 @@ const showJournal = async(req,res)=>{
     }
 }
 
+const showById = async(req,res)=>{
+    const id = req.params.id
+    try{
+        const show = await journalModel.findOne({
+            _id:id,
+            user: req.user.id
+        })    
+        
+        if(!show){
+
+            return res.status(404).json({
+                message:"Journal not found"
+            })
+        }
+        res.status(200).json({
+            show
+        })
+        
+
+    }catch(err){
+        console.log(err),
+        res.json({
+            message:"cant fetch"
+        })
+
+    }
+}
 
 
 
-module.exports = {createJournal,showJournal}
+
+module.exports = {createJournal, showJournal, showById}
