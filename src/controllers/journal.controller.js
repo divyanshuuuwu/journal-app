@@ -25,11 +25,24 @@ const createJournal = async(req , res)=>{
         })
         
     }
+}
 
+const showJournal = async(req,res)=>{
+   try{ const alljournal = await journalModel.find(
+        {user: req.user.id}
+    )
+    res.json({
+        alljournal
+    })}catch(err){
+        console.log(err)
+        res.json({
+            message:"cant get the journals"
+        })
 
+    }
 }
 
 
 
 
-module.exports = {createJournal}
+module.exports = {createJournal,showJournal}
