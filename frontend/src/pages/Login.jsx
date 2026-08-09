@@ -2,9 +2,10 @@ import React from 'react'
 import {ArrowRightToLine} from "lucide-react"
 import { useState } from 'react'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-
+    const navigate = useNavigate();
     const [username, setUsername] = useState("")
     const inputUsername = (e)=>{
         setUsername(e.target.value)
@@ -22,8 +23,16 @@ const Login = () => {
 
     const loginHandler = async(e)=>{
         e.preventDefault()
-        try{const response = await axios.post("http://localhost:3000/auth/login",userData)
+        try{const response = await axios.post("http://localhost:3000/auth/login",userData,
+            {
+        withCredentials: true           // config
+    }
+        )
             console.log(response.data)
+            if(response.data.message === "user logged in successfully"){
+                navigate("/dashboard",{replace:true})
+            }
+            
         }
         catch(err){
             console.log(err)
