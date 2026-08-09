@@ -3,6 +3,8 @@ const app = express()
 const authRoute = require("./routes/auth.route")
 const journalRoute = require("./routes/journal.route")
 const cookieParser = require("cookie-parser")
+const cors = require("cors");
+app.use(cors());
 
 app.use(cookieParser())
 app.use(express.json())

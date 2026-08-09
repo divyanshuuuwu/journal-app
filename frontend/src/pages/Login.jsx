@@ -1,6 +1,7 @@
 import React from 'react'
 import {ArrowRightToLine} from "lucide-react"
 import { useState } from 'react'
+import axios from "axios"
 
 const Login = () => {
 
@@ -14,9 +15,20 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
-    const loginHandler = (e)=>{
+    const userData = {username: username,
+        password:password
+    }
+
+
+    const loginHandler = async(e)=>{
         e.preventDefault()
-        console.log("hello")
+        try{const response = await axios.post("http://localhost:3000/auth/login",userData)
+            console.log(response.data)
+        }
+        catch(err){
+            console.log(err)
+        }
+
     }
 
 
