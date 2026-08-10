@@ -8,6 +8,7 @@ const createJournal = async(req , res)=>{
         const newJournal = await journalModel.create({
             date,
             gratitude,
+            goals,
             whatIDidWrong,
             whatILearnt,
             user: req.user.id
