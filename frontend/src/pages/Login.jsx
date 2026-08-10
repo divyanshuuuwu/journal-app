@@ -5,6 +5,11 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+    const [loginSuccess, setLoginSuccess] = useState(false);
+
+
+
     const navigate = useNavigate();
     const [username, setUsername] = useState("")
     const inputUsername = (e)=>{
@@ -25,12 +30,19 @@ const Login = () => {
         e.preventDefault()
         try{const response = await axios.post("http://localhost:3000/auth/login",userData,
             {
-        withCredentials: true           // config
-    }
+                withCredentials: true           // config
+            }
         )
             console.log(response.data)
             if(response.data.message === "user logged in successfully"){
-                navigate("/dashboard",{replace:true})
+                setLoginSuccess(true);
+                
+
+                // Hide after 1 second
+                 await setTimeout(() => {
+                 setLoginSuccess(false),
+                 navigate("/dashboard",{replace:true});
+                 }, 2000);
             }
             
         }
@@ -50,6 +62,7 @@ const Login = () => {
 
   return (
     <div>
+         
         {/* screen */}
         <div className='flex h-screen w-full justify-center items-center '>
             {/* main container */}
@@ -82,6 +95,7 @@ const Login = () => {
                     >
                         Login
                     </button>
+                    
                     {/* register */}
                 <div className='flex flex-row-reverse ' >
                     <h4  className=''>You dont have a account?</h4>
@@ -91,6 +105,12 @@ const Login = () => {
                 
             </div>   
         </div>
+                        {loginSuccess && (
+                        <div className="fixed top-5 right-5 rounded-lg bg-green-500 px-5 py-3 text-white shadow-lg">
+                        Login Successful
+                        </div>
+)}
+        
     </div>
   )
 }

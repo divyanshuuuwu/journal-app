@@ -5,6 +5,10 @@ import axios from 'axios'
 
 const Dashboard = () => {
 
+
+    const [dateRequired, setDateRequired] = useState(false)
+
+
     const [gratitude, setGratitude] = useState("")
     const inputGratitude = (e)=>{
         setGratitude(e.target.value)
@@ -44,11 +48,33 @@ const Dashboard = () => {
         // e.preventDefault()
         try{
             const response = await axios.post("http://localhost:3000/journals/create",newJournal,{
-        withCredentials: true
+        withCredentials: true,
+        
     })
             console.log(response.data)
+            setDate("")
+            setDidWrong("")
+            setLearnt("")
+            setGoals("")
+            setGratitude("")
         }catch(err){
-            console.error(err)
+            
+            const error = err.response.data.message
+            console.log("ERROR:", error);
+    console.log("TYPE:", typeof error);
+    console.log("LENGTH:", error.length);
+    console.log("JSON:", JSON.stringify(error));
+
+
+            if(error === "Date is required"){
+                console.log("conditon worked")
+                setDateRequired(true)
+
+                 setTimeout(() => {
+                    setDateRequired(false)
+                }, 2000);
+                
+            }
             
         }
     }
@@ -79,12 +105,17 @@ const Dashboard = () => {
             {/* left component */}
         <div className='bg-[#E2D5C3] w-50 h-162.3 '>
             <div className=' p-4 flex flex-col gap-25 mt-20 items-center font-bold text-2xl'>
+
             <input className='bg-white h-10 w-30 rounded-2xl px-2' type="text" placeholder='Date'
              onChange={inputDate}
-             value={date} />
+             value={date} /> 
+
             <h1 className='bg-[#D6C5AA] border p-2 rounded-2xl'>Journals</h1>
             <h1 className='bg-[#D6C5AA] border p-2 rounded-2xl'>settings</h1>
             <h1 className='bg-[#D6C5AA] border p-2 rounded-2xl'>logout</h1>
+             {dateRequired && (
+                        <h1 className='bg-red-500 border p-2 rounded-2xl'>Date required</h1>
+                )}
             
             </div>
         </div>

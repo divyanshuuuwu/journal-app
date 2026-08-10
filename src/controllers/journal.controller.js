@@ -19,9 +19,9 @@ const createJournal = async(req , res)=>{
         })
 
     }catch(err){
-        throw console.error(err);
-        res.status(401).json({
-            message:"Journal is not created"
+         console.log(err);
+        res.status(400).json({
+            message:"Date is required"
         })
         
     }
