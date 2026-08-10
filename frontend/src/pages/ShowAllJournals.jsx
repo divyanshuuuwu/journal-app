@@ -26,7 +26,7 @@ let printJournal = <h1 className='font-bold text-6xl mt-10'>No Journal yet</h1>
 if(journalData.length>0){
     printJournal = journalData.map((elem,index)=>{
 
-        return <div className='bg-amber-800 w-220 h-100 gap-2 rounded-4xl mt-5 p-8 mb-5 flex flex-col
+        return <div className='bg-amber-900 w-220 h-100 gap-2 rounded-4xl mt-5 p-8 mb-5 flex flex-col
             text-2xl overflow-auto
             justify-around font-semibold' key={index}>
                 <h1 className='bg-amber-100 rounded-2xl px-4 p-5'>Date: <br /> {elem.date}</h1>
@@ -59,7 +59,7 @@ if(journalData.length>0){
 
   return (
     // screen
-    <div className='bg-amber-200 h-screen w-full flex justify-center items-center '>
+    <div className='bg-amber-100 h-screen w-full flex justify-center items-center '>
         {/* main conatiner */}
         <div className='bg-amber-50 w-300 h-220 rounded-4xl flex justify-center flex-wrap overflow-auto'>
             {/* journal */}
