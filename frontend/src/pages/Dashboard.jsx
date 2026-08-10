@@ -2,8 +2,15 @@ import React from 'react'
 import bgimg from '../assets/book bg.png'
 import { useState } from 'react'
 import axios from 'axios'
+import { Navigate, useNavigate } from 'react-router-dom'
+
+
 
 const Dashboard = () => {
+    const navigate = useNavigate()
+    const showAllJournals = ()=>{
+        navigate("/showall",{replace:true})
+    }
 
 
     const [dateRequired, setDateRequired] = useState(false)
@@ -110,7 +117,9 @@ const Dashboard = () => {
              onChange={inputDate}
              value={date} /> 
 
-            <h1 className='bg-[#D6C5AA] border p-2 rounded-2xl'>Journals</h1>
+            <h1 className='bg-[#D6C5AA] border p-2 rounded-2xl'
+            onClick={showAllJournals}
+            >Journals</h1>
             <h1 className='bg-[#D6C5AA] border p-2 rounded-2xl'>settings</h1>
             <h1 className='bg-[#D6C5AA] border p-2 rounded-2xl'>logout</h1>
              {dateRequired && (
