@@ -75,7 +75,7 @@ const registerUser = async()=>{
             onChange={inputPassword}
             value={password}
             />
-            <button className='bg-blue-300 p-1 w-30 rounded-2xl font-semibold border'
+            <button className='bg-blue-300 p-1 w-30 rounded-2xl font-semibold '
             onClick={registerUser}
             >Create</button>
           </div>
