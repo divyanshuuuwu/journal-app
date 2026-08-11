@@ -33,6 +33,9 @@ const deleteJournal = async(id)=>{
     
 }
 
+const editJournal = async(id)=>{
+    
+}
 
 
 
