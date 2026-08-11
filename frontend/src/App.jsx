@@ -3,6 +3,7 @@ import Login from './pages/Login'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
 import ShowAllJournals from './pages/ShowAllJournals';
+import Register from "./pages/Register"
 
 
 
@@ -10,6 +11,7 @@ const App = () => {
   return (
     <BrowserRouter>
     <Routes>
+    <Route path='/register' element={<Register/>}/>
     <Route path='/' element={ <Login/>} />
     <Route path='/dashboard' element={ <Dashboard/>} />
     <Route path='/showall' element={<ShowAllJournals/>} />

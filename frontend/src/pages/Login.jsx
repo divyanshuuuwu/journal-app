@@ -5,23 +5,28 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-
+    const navigate = useNavigate();
     const [loginSuccess, setLoginSuccess] = useState(false);
 
+    const [loginFail, setLoginFail] = useState(false);
 
-
-    const navigate = useNavigate();
-    const [username, setUsername] = useState("")
-    const inputUsername = (e)=>{
-        setUsername(e.target.value)
+    const registerPage = ()=>{
+        navigate("/register",{replace:true})
     }
+
+    
+    const [identifier, setIdentifier] = useState("")
+
+    const inputIdentifier = (e) => {
+    setIdentifier(e.target.value)
+}
 
     const [password, setPassword] = useState("")
     const inputPassword = (e)=>{
         setPassword(e.target.value)
     }
 
-    const userData = {username: username,
+    const userData = {identifier: identifier,
         password:password
     }
 
@@ -48,6 +53,11 @@ const Login = () => {
         }
         catch(err){
             console.log(err)
+            setLoginFail(true)
+            await setTimeout(() => {
+                 setLoginFail(false)
+                 
+                 }, 2000);
         }
 
     }
@@ -81,10 +91,10 @@ const Login = () => {
                 <div className='flex justify-center items-center mt-5 '>
                     <form className=' flex flex-col gap-2 w-80 ' action="">
                     <input className='bg-amber-50 px-4 h-10 rounded-2xl' type="text" placeholder='username or email'
-                    onChange={inputUsername}
-                    value={username}
+                    onChange={inputIdentifier}
+                    value={identifier}
                     />
-                    <input className='bg-amber-50 px-4 h-10 rounded-2xl' type="text" placeholder='password'
+                    <input className='bg-amber-50 px-4 h-10 rounded-2xl' type="password" placeholder='password'
                     onChange={inputPassword}
                     value={password}
                     />
@@ -98,7 +108,9 @@ const Login = () => {
                     
                     {/* register */}
                 <div className='flex flex-row-reverse ' >
-                    <h4  className=''>You dont have a account?</h4>
+                    <h4  className=''
+                    onClick={registerPage}
+                    >You dont have a account?</h4>
                 </div>
                     </form>
                 </div>
@@ -109,7 +121,13 @@ const Login = () => {
                         <div className="fixed top-5 right-5 rounded-lg bg-green-500 px-5 py-3 text-white shadow-lg">
                         Login Successful
                         </div>
-)}
+                            )}
+
+                             {loginFail && (
+                        <div className="fixed top-5 right-5 rounded-lg bg-red-500 px-5 py-3 text-white shadow-lg">
+                        Login Failed
+                        </div>
+                            )}
         
     </div>
   )

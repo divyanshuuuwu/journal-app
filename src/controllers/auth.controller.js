@@ -42,12 +42,12 @@ const isUserAlreadyExists = await userModel.findOne({
 
 
 const loginUser = async(req, res)=>{
-    const {username , email , password} = req.body
+    const {identifier , password} = req.body
 
 const user = await userModel.findOne({
     $or: [
-        { email: email },
-        { username: username }
+        { email: identifier },
+        { username: identifier }
     ]
 });
 

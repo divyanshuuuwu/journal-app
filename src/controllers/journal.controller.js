@@ -99,6 +99,7 @@ const updateJournal = async(req,res)=>{
 }
 
 const deleteJournal = async(req, res)=>{
+    
     const id = req.params.id
      try{const userDeleted = await journalModel.findOneAndDelete(
         {_id:id, user:req.user.id}) 
