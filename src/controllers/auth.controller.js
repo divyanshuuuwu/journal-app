@@ -50,7 +50,7 @@ const user = await userModel.findOne({
         { username: identifier }
     ]
 });
-
+ 
 if(!user){
     return res.status(404).json({
         message:"user not found"
