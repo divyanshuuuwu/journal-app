@@ -94,7 +94,7 @@ const Login = () => {
                     onChange={inputIdentifier}
                     value={identifier}
                     />
-                    <input className='bg-amber-50 px-4 h-10 rounded-2xl ' type="password" placeholder='password'
+                    <input className='bg-amber-50 px-4 h-10 rounded-2xl border ' type="password" placeholder='password'
                     onChange={inputPassword}
                     value={password}
                     />
