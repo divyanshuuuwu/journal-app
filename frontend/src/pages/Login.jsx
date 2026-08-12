@@ -90,11 +90,11 @@ const Login = () => {
                 {/* inputs */}
                 <div className='flex justify-center items-center mt-5 '>
                     <form className=' flex flex-col gap-2 w-80 ' action="">
-                    <input className='bg-amber-50 px-4 h-10 rounded-2xl' type="text" placeholder='username or email'
+                    <input className='bg-amber-50 px-4 h-10 rounded-2xl border' type="text" placeholder='username or email'
                     onChange={inputIdentifier}
                     value={identifier}
                     />
-                    <input className='bg-amber-50 px-4 h-10 rounded-2xl' type="password" placeholder='password'
+                    <input className='bg-amber-50 px-4 h-10 rounded-2xl ' type="password" placeholder='password'
                     onChange={inputPassword}
                     value={password}
                     />
