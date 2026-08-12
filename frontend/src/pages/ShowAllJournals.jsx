@@ -53,7 +53,7 @@ let printJournal = <h1 className='font-bold text-6xl mt-10'>No Journal yet</h1>
 if(journalData.length>0){
     printJournal = journalData.map((elem,index)=>{
 
-        return <div className='bg-amber-900 w-220 h-100 gap-2 rounded-4xl  p-8 mb-5 mt-10 flex flex-col
+        return <div className='bg-zinc-500 w-220 h-100 gap-2 rounded-4xl  p-8 mb-5 mt-10 flex flex-col
             text-2xl overflow-y-auto scrollbar-none
             justify-around font-semibold' key={elem._id}>
                 <h1 className='bg-amber-100 rounded-2xl px-4 p-5'>Date: <br /> {elem.date}</h1>
