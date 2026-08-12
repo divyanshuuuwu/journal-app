@@ -99,7 +99,7 @@ const Login = () => {
                     value={password}
                     />
                     <button 
-                    className='bg-zinc-800 text-amber-50 font-bold mt-5 h-10 rounded-2xl'
+                    className='bg-zinc-800 text-amber-50 font-bold mt-5 h-10 rounded-2xl border'
                     onClick={loginHandler}
                     
                     >
