@@ -34,6 +34,13 @@ const deleteJournal = async(id)=>{
 }
 
 const editJournal = async(id)=>{
+    try{
+        await axios.patch(`http://localhost:3000/journals/delete/${id}`)
+
+
+    }catch(err){
+
+    }
     
 }
 
