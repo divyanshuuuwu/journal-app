@@ -90,7 +90,7 @@ const updateJournal = async (e) => {
 
 
 
-  return (
+  return ( 
     // screen
     <div className='bg-zinc-600 h-screen w-full flex justify-center items-center '>
         {/* main container */}
