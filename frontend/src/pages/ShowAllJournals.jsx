@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+
 
 
 const ShowAllJournals = () => {
+    const navigate = useNavigate()
+
 
     const [journalData, setJournalData] = useState([])
 
@@ -36,6 +41,13 @@ const deleteJournal = async(id)=>{
 
 
 
+const navigateUpdate = (id)=>{
+    navigate(`/update/${id}` )
+
+
+
+}
+
 
 
 
@@ -64,7 +76,9 @@ if(journalData.length>0){
                     <button className='bg-amber-50 w-25 rounded-2xl'
                     onClick={() => deleteJournal(elem._id)}
                     >Delete</button>
-                    <button className='bg-amber-50 w-25 rounded-2xl'>Upadte</button>
+                    <button className='bg-amber-50 w-25 rounded-2xl'
+                    onClick={()=>{navigateUpdate(elem._id)}}
+                    >Upadte</button>
                 </div>
 
             </div>
