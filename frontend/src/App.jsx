@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
 import ShowAllJournals from './pages/ShowAllJournals';
 import Register from "./pages/Register"
+import Update from './pages/Update';
 
 
 
@@ -15,8 +16,8 @@ const App = () => {
     <Route path='/' element={ <Login/>} />
     <Route path='/dashboard' element={ <Dashboard/>} />
     <Route path='/showall' element={<ShowAllJournals/>} />
-
-
+    <Route path='/update' element={<Update/>}/>
+    
 
     </Routes>
     

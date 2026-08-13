@@ -33,16 +33,8 @@ const deleteJournal = async(id)=>{
     
 }
 
-const editJournal = async(id)=>{
-    try{
-        await axios.patch(`http://localhost:3000/journals/delete/${id}`)
 
 
-    }catch(err){
-
-    }
-    
-}
 
 
 
@@ -72,7 +64,7 @@ if(journalData.length>0){
                     <button className='bg-amber-50 w-25 rounded-2xl'
                     onClick={() => deleteJournal(elem._id)}
                     >Delete</button>
-                    <button className='bg-amber-50 w-25 rounded-2xl'>Edit</button>
+                    <button className='bg-amber-50 w-25 rounded-2xl'>Upadte</button>
                 </div>
 
             </div>
